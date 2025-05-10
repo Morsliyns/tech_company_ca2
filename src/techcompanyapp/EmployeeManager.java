@@ -65,7 +65,7 @@ class EmployeeManager {
             }
         }
     }
-
+    // update employee
     public boolean updateEmployee(String name, ManagerType newManager, DepartmentType newDepartment) {
         for (Employee e : employees) {
             if (e.getName().equalsIgnoreCase(name)) {
@@ -77,7 +77,7 @@ class EmployeeManager {
         System.out.println("Employee not found.");
         return false;
     }
-
+    // delete employee
     public boolean deleteEmployee(String name) {
         Iterator<Employee> iterator = employees.iterator();
         while (iterator.hasNext()) {
@@ -91,7 +91,7 @@ class EmployeeManager {
         System.out.println("Employee not found.");
         return false;
     }
-
+    // load employees from file .txt
     public void loadEmployeesFromFile(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Skip header
