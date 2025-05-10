@@ -91,7 +91,7 @@ class EmployeeManager {
         System.out.println("Employee not found.");
         return false;
     }
-    // load employees from file .txt
+    
     public void loadEmployeesFromFile(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Skip header
