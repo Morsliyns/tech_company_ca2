@@ -13,7 +13,7 @@ import java.io.*;
 public class TechCompanyApp {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments 
      */
     private static final Scanner scanner = new Scanner(System.in);
     private static final EmployeeManager manager = new EmployeeManager();
