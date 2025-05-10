@@ -10,42 +10,6 @@ import java.io.*;
  *
  * @author youness
  */
-// Employee model class implementing Comparable for sorting by name
-class Employee implements Comparable<Employee> {
-    private String name;
-    private ManagerType managerType;
-    private DepartmentType department;
-
-    public Employee(String name, ManagerType managerType, DepartmentType department) {
-        this.name = name;
-        this.managerType = managerType;
-        this.department = department;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ManagerType getManagerType() {
-        return managerType;
-    }
-
-    public DepartmentType getDepartment() {
-        return department;
-    }
-
-    // Compare employees alphabetically by name
-    @Override
-    public int compareTo(Employee other) {
-        return this.name.compareToIgnoreCase(other.name);
-    }
-
-    @Override
-    public String toString() {
-        return name + " | " + managerType + " | " + department;
-    }
-}
-
 // Handles operations for managing employees (OOP encapsulation)
 class EmployeeManager {
     private List<Employee> employees;
@@ -92,6 +56,42 @@ class EmployeeManager {
     }
 
     // Load employees from a CSV file with structure First name, Last name, ..., Department, Job Title
+    public void showAllEmployees() {
+        if (employees.isEmpty()) {
+            System.out.println("No employees to display.");
+        } else {
+            for (Employee e : employees) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public boolean updateEmployee(String name, ManagerType newManager, DepartmentType newDepartment) {
+        for (Employee e : employees) {
+            if (e.getName().equalsIgnoreCase(name)) {
+                employees.set(employees.indexOf(e), new Employee(name, newManager, newDepartment));
+                System.out.println("Updated employee: " + name);
+                return true;
+            }
+        }
+        System.out.println("Employee not found.");
+        return false;
+    }
+
+    public boolean deleteEmployee(String name) {
+        Iterator<Employee> iterator = employees.iterator();
+        while (iterator.hasNext()) {
+            Employee e = iterator.next();
+            if (e.getName().equalsIgnoreCase(name)) {
+                iterator.remove();
+                System.out.println("Deleted employee: " + name);
+                return true;
+            }
+        }
+        System.out.println("Employee not found.");
+        return false;
+    }
+
     public void loadEmployeesFromFile(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Skip header

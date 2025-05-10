@@ -7,14 +7,20 @@ package techcompanyapp;
 /**
  *
  * @author youness
+ * 
+ * Enum to represent all available menu options.
+ * Each option is assigned a numeric code and a user-friendly description.
  */
 public enum MenuOption {
     ADD_EMPLOYEE(1, "Add Employee"),
     GENERATE_RANDOM_EMPLOYEE(2, "Generate Random Employee"),
     SORT_EMPLOYEES(3, "Sort Employees"),
     SEARCH_EMPLOYEE(4, "Search Employee"),
-    LOAD_EMPLOYEES_FROM_FILE(5, "Load Employees from File"),
-    EXIT_SYSTEM(6, "Exit System");
+    SHOW_ALL_EMPLOYEES(5, "Show All Employees"),
+    UPDATE_EMPLOYEE(6, "Update Employee"),
+    DELETE_EMPLOYEE(7, "Delete Employee"),
+    LOAD_EMPLOYEES_FROM_FILE(8, "Load Employees from File"),
+    EXIT_SYSTEM(9, "Exit System");
 
     private final int code;
     private final String description;
@@ -45,4 +51,6 @@ public enum MenuOption {
     public String toString() {
         return code + ". " + description;
     }
+
+    
 }
